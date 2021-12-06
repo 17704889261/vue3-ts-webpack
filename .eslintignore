@@ -1,0 +1,15 @@
+node_modules/*
+public/*
+docs/*
+dist/*
+tests/*
+
+.husky
+.local
+
+Dockerfile
+
+*.sh
+*.md
+*.woff
+*.ttf
