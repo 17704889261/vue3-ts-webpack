@@ -18,13 +18,13 @@ module.exports = {
     sourceType: 'module'
   },
   globals: {
-    window: "readonly",
-    document: "readonly",
-    localStorage: "readonly",
-    defineProps: "readonly",
-    defineEmits: "readonly",
-    defineExpose: "readonly",
-    withDefaults: "readonly"
+    window: 'readonly',
+    document: 'readonly',
+    localStorage: 'readonly',
+    defineProps: 'readonly',
+    defineEmits: 'readonly',
+    defineExpose: 'readonly',
+    withDefaults: 'readonly'
   },
   plugins: ['vue', 'import'],
   rules: {
@@ -45,11 +45,7 @@ module.exports = {
     // most of the codebase are expected to be env agnostic
     'no-restricted-globals': ['error'],
     // todo: vue3的工程保留，其余的工程可以干掉
-    'no-restricted-syntax': [
-      'error',
-      'ObjectExpression > SpreadElement',
-      'ObjectPattern > RestElement'
-    ],
+    'no-restricted-syntax': ['error', 'ObjectPattern > RestElement'],
     'no-shadow': 'off',
 
     // basic - eslint
