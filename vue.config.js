@@ -2,6 +2,17 @@
 // vue.config.js
 
 const path = require('path')
+const webpack = require('webpack')
+
+/**
+ * 按需加载 element-plus start
+ * * */
+const AutoImport = require('unplugin-auto-import/webpack')
+const Components = require('unplugin-vue-components/webpack')
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
+/**
+ * 按需加载 element-plus end
+ * * */
 
 // 打包分析
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
@@ -59,7 +70,19 @@ module.exports = {
     }
   },
   configureWebpack: config => {
-    const plugins = []
+    const plugins = [
+      AutoImport({
+        resolvers: [ElementPlusResolver()]
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()]
+      }),
+      new webpack.NormalModuleReplacementPlugin(
+        // eslint-disable-next-line no-useless-escape
+        /element-plus[\/\\]lib[\/\\]locale[\/\\]lang[\/\\]en/,
+        'element-plus/lib/locale/lang/zh-cn'
+      )
+    ]
 
     if (IS_PROD) {
       // 消除了一些warning，但是没有减小包提及
