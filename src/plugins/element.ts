@@ -7,7 +7,11 @@ import {
   ElAlert,
   ElMessage,
   ElLoading,
-  ElScrollbar
+  ElScrollbar,
+  ElMenu,
+  ElMenuItem,
+  ElMenuItemGroup,
+  ElSubmenu
 } from 'element-plus'
 import lang from 'element-plus/lib/locale/lang/zh-cn'
 import 'element-plus/lib/theme-chalk/index.css'
@@ -20,7 +24,11 @@ const components = [
   ElAlert,
   ElMessage,
   ElLoading,
-  ElScrollbar
+  ElScrollbar,
+  ElMenu,
+  ElMenuItem,
+  ElMenuItemGroup,
+  ElSubmenu
 ]
 
 export default (app: any) => {

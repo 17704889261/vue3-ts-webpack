@@ -1,7 +1,7 @@
 <template>
   <el-container class="app-container">
     <!-- 左侧导航 -->
-    <el-aside width="200px">Aside</el-aside>
+    <AsideMenu />
     <!-- 右侧主体 -->
     <el-container>
       <!-- 顶部header -->
@@ -17,7 +17,9 @@
   </el-container>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import AsideMenu from './common/aside/index.vue'
+</script>
 
 <style lang="scss">
   .app-container {
@@ -26,11 +28,6 @@
   .el-header,
   .el-footer {
     background-color: #b3c0d1;
-    color: var(--el-text-color-primary);
-  }
-
-  .el-aside {
-    background-color: #d3dce6;
     color: var(--el-text-color-primary);
   }
 
