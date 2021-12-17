@@ -11,29 +11,37 @@
       <el-menu
         class="aside-menu"
         text-color="#fff"
-        default-active="1-4-1"
+        default-active="Index-0"
+        :router="true"
         :collapse="isCollapse"
         @open="handleOpen"
         @close="handleClose"
       >
-        <el-submenu index="1" popper-class="aside-menu-poper" :class="{ isCollapse: isCollapse }">
-          <template #title>
-            <img src="@/assets/logo.png" alt="" />
-            <span>Navigator One</span>
-          </template>
-          <el-menu-item-group>
-            <template #title><span>Group One</span></template>
-            <el-menu-item index="1-1">item one</el-menu-item>
-            <el-menu-item index="1-2">item two</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="Group Two">
-            <el-menu-item index="1-3">item three</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="1-4">
-            <template #title><span>item four</span></template>
-            <el-menu-item index="1-4-1">item one</el-menu-item>
+        <template v-for="(item, index) in menus" :key="`${item.name}-${index}`">
+          <el-submenu
+            v-if="item.children.length > 0"
+            :index="`${String(item.name)}-${index}`"
+            popper-class="aside-menu-poper"
+            :class="{ isCollapse: isCollapse }"
+          >
+            <template #title>
+              <img src="@/assets/logo.png" alt="" />
+              <span>{{ item.name }}</span>
+            </template>
+            <el-menu-item
+              v-for="(ktem, kndex) in item.children"
+              :key="`${String(ktem.name)}-${kndex}`"
+              :index="`${String(ktem.name)}-${index}-${kndex}`"
+              :route="`${item.path}/${ktem.path}`"
+            >
+              {{ ktem.name }}
+            </el-menu-item>
           </el-submenu>
-        </el-submenu>
+          <el-menu-item v-else :index="`${String(item.name)}-${index}`" :route="item.path">
+            <img src="@/assets/logo.png" alt="" />
+            <span>{{ item.name }}</span>
+          </el-menu-item>
+        </template>
       </el-menu>
     </el-scrollbar>
     <div class="aside-collapse-active" @click="isCollapse = !isCollapse">
@@ -44,6 +52,9 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
+  import { getMenus } from '@/router/menu'
+
+  const menus = getMenus()
 
   const isCollapse = ref(false)
 
