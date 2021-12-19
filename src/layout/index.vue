@@ -9,7 +9,11 @@
       <!-- 核心内容区 -->
       <el-main>
         Main
-        <router-view></router-view>
+        <router-view v-slot="{ Component }">
+          <transition :name="viewTransition" mode="out-in">
+            <component :is="Component" />
+          </transition>
+        </router-view>
       </el-main>
       <!-- 底部footer -->
       <el-footer>Footer</el-footer>
@@ -18,10 +22,17 @@
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue'
+  import { useRoute } from 'vue-router'
   import AsideMenu from './common/aside/index.vue'
+
+  const rt = computed(() => {
+    return useRoute().meta.transition as string
+  })
+  const viewTransition = rt.value || 'slide-fade'
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .app-container {
     height: 100%;
   }

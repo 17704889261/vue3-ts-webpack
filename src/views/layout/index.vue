@@ -1,24 +1,20 @@
 <template>
   <div id="nav">
-    <router-link to="/layout">Layout</router-link> | <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-    <div>
-      <p><b>题目：</b> 扁平化数组 转换 成树形结构</p>
-      <p><b>原始数组：</b></p>
-      <pre>
-        const arr: BaseDataObj[] = [
-          { id: 5, name: '部门5', pid: 4 },
-          { id: 2, name: '部门2', pid: 1 },
-          { id: 3, name: '部门3', pid: 1 },
-          { id: 1, name: '部门1', pid: 0 },
-          { id: 4, name: '部门4', pid: 3 }
-        ]
-      </pre>
-      <p><b>转换后的结果：</b></p>
-      <pre>
-        {{ mapArr }}
-      </pre>
-    </div>
+    <p><b>题目：</b> 扁平化数组 转换 成树形结构</p>
+    <p><b>原始数组：</b></p>
+    <pre>
+      const arr: BaseDataObj[] = [
+        { id: 5, name: '部门5', pid: 4 },
+        { id: 2, name: '部门2', pid: 1 },
+        { id: 3, name: '部门3', pid: 1 },
+        { id: 1, name: '部门1', pid: 0 },
+        { id: 4, name: '部门4', pid: 3 }
+      ]
+    </pre>
+    <p><b>转换后的结果：</b></p>
+    <pre>
+      {{ mapArr }}
+    </pre>
   </div>
 </template>
 <script lang="ts">
@@ -125,8 +121,6 @@
 </script>
 <style lang="scss">
   #nav {
-    padding: 30px;
-
     a {
       font-weight: bold;
       color: #2c3e50;

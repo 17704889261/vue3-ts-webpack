@@ -5,11 +5,11 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/test',
     name: 'Test',
-    redirect: '/test/index',
+    redirect: '/test/home',
     component: DefaultLayout,
     children: [
       {
-        path: 'index',
+        path: 'home',
         name: 'Home',
         component: () => import(/* webpackChunkName: "test" */ '@/views/home/index.vue')
       },

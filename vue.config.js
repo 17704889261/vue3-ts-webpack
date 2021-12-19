@@ -151,7 +151,9 @@ module.exports = {
     extract: IS_PROD,
     // 给 sass-loader 传递相关选项
     loaderOptions: {
-      sass: {}
+      sass: {
+        prependData: `@import "@/assets/styles/transitions.scss";`
+      }
     }
   },
   devServer: {

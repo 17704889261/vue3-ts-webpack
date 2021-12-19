@@ -17,49 +17,13 @@ interface Menu {
 }
 
 export function getMenus() {
-  const { getRoutes } = useRouter()
-  const menus = getRoutes()
-  const resMenu: Menu[] = []
-
+  const { options } = useRouter()
+  const menus = options.routes
   menus.map(item => {
-    const { name, path, meta, children } = item
-    const resItem: Menu = {
-      name,
-      path,
-      meta,
-      children
-    }
-    const findItem = isSame(resMenu, path)
-    if (findItem && findItem.children.length === 0) {
-      findItem.children = resItem.children
-    } else {
-      resMenu.push(resItem)
-    }
-    return resItem
-  })
-  const childrenRouters: any = []
-  findChildrenRouters(resMenu).map((val: any) => {
-    val.children.map((item: any) => {
-      childrenRouters.push(item)
-      return item
-    })
-    return val
-  })
-  childrenRouters.map((item: any) => {
-    const index = resMenu.findIndex(val => val.name === item.name)
-    if (index > -1) {
-      resMenu.splice(index, 1)
+    if (!item.children) {
+      item.children = []
     }
     return item
   })
-  return resMenu
-}
-
-function isSame(arr: any, path: any) {
-  return arr.find((val: any) => val.path === path)
-}
-function findChildrenRouters(arr: any) {
-  return arr.filter((val: any) => {
-    return val.children.length > 0
-  })
+  return menus
 }

@@ -7,11 +7,12 @@
         <h1 v-show="!isCollapse">Vue3 TS Webpack</h1>
       </transition>
     </div>
+
     <el-scrollbar class="aside-scrollbar aside-logo-active" :always="true">
       <el-menu
         class="aside-menu"
         text-color="#fff"
-        default-active="Index-0"
+        default-active="Test-2-0"
         :router="true"
         :collapse="isCollapse"
         @open="handleOpen"
@@ -19,7 +20,7 @@
       >
         <template v-for="(item, index) in menus" :key="`${item.name}-${index}`">
           <el-submenu
-            v-if="item.children.length > 0"
+            v-if="item && item.children && item.children.length > 0"
             :index="`${String(item.name)}-${index}`"
             popper-class="aside-menu-poper"
             :class="{ isCollapse: isCollapse }"
@@ -30,8 +31,8 @@
             </template>
             <el-menu-item
               v-for="(ktem, kndex) in item.children"
-              :key="`${String(ktem.name)}-${kndex}`"
-              :index="`${String(ktem.name)}-${index}-${kndex}`"
+              :key="`${String(item.name)}-${kndex}`"
+              :index="`${String(item.name)}-${index}-${kndex}`"
               :route="`${item.path}/${ktem.path}`"
             >
               {{ ktem.name }}
@@ -44,6 +45,7 @@
         </template>
       </el-menu>
     </el-scrollbar>
+
     <div class="aside-collapse-active" @click="isCollapse = !isCollapse">
       <span>{{ isCollapse ? '展开' : '收起' }}</span>
     </div>
@@ -56,6 +58,7 @@
 
   const menus = getMenus()
 
+  const show = ref(true)
   const isCollapse = ref(false)
 
   const asideWidth = computed(() => {
@@ -71,28 +74,19 @@
 </script>
 
 <style lang="scss" scoped>
-  /* 动画效果 start */
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.3s ease;
-  }
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
-  }
-  /* 动画效果 end */
-
+  /* 菜单主体内容 */
   .aside-container {
     background-color: var(--aside-background-color);
     height: 100%;
     transition: width 0.5s;
 
+    /* 顶部logo */
     .aside-logo {
       height: 48px;
-      padding: 0 20px;
+      padding: 0 10px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       align-content: center;
       flex-wrap: nowrap;
 
@@ -108,6 +102,7 @@
       }
     }
 
+    /* 底部菜单 */
     .aside-collapse-active {
       color: #fff;
       height: 48px;
@@ -116,43 +111,43 @@
       text-align: center;
       cursor: pointer;
     }
+  }
 
-    .aside-scrollbar {
-      height: 100%;
+  /* menu区域 */
+  .aside-container .aside-scrollbar {
+    height: 100%;
 
-      &.aside-logo-active {
-        height: calc(100% - 48px - 48px);
-      }
-
-      :deep(.el-scrollbar__bar.is-horizontal) {
-        display: none;
-      }
+    &.aside-logo-active {
+      height: calc(100% - 48px - 48px);
     }
 
-    :deep(.el-menu) {
-      border: none;
-      --el-menu-background-color: var(--aside-background-color);
-
-      img {
-        width: 16px;
-        margin-right: 8px;
-        transition: width 10.5s;
-      }
-
-      .isCollapse .el-submenu__title {
-        padding: 0 10px !important;
-
-        img {
-          width: 20px;
-          margin-right: 0px;
-          transition: width 10.5s;
-        }
-      }
+    :deep(.el-scrollbar__bar.is-horizontal) {
+      display: none;
     }
   }
 </style>
 
 <style lang="scss">
+  /* menu区域 */
+  .aside-container .el-menu {
+    border: none;
+    --el-menu-background-color: var(--aside-background-color);
+
+    .el-menu-item,
+    .el-submenu__title {
+      padding-left: 16px !important;
+    }
+
+    .el-submenu .el-menu-item {
+      padding-left: 36px !important;
+    }
+
+    img {
+      width: 16px;
+      margin-right: 8px;
+      transition: width 10.5s;
+    }
+  }
   /* 浮窗状态下的菜单 */
   .aside-menu-poper {
     left: 48px !important;
