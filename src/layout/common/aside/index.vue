@@ -8,43 +8,7 @@
       </transition>
     </div>
 
-    <el-scrollbar class="aside-scrollbar aside-logo-active" :always="true">
-      <el-menu
-        class="aside-menu"
-        text-color="#fff"
-        default-active="Test-2-0"
-        :router="true"
-        :collapse="isCollapse"
-        @open="handleOpen"
-        @close="handleClose"
-      >
-        <template v-for="(item, index) in menus" :key="`${item.name}-${index}`">
-          <el-submenu
-            v-if="item && item.children && item.children.length > 0"
-            :index="`${String(item.name)}-${index}`"
-            popper-class="aside-menu-poper"
-            :class="{ isCollapse: isCollapse }"
-          >
-            <template #title>
-              <img src="@/assets/logo.png" alt="" />
-              <span>{{ item.name }}</span>
-            </template>
-            <el-menu-item
-              v-for="(ktem, kndex) in item.children"
-              :key="`${String(item.name)}-${kndex}`"
-              :index="`${String(item.name)}-${index}-${kndex}`"
-              :route="`${item.path}/${ktem.path}`"
-            >
-              {{ ktem.name }}
-            </el-menu-item>
-          </el-submenu>
-          <el-menu-item v-else :index="`${String(item.name)}-${index}`" :route="item.path">
-            <img src="@/assets/logo.png" alt="" />
-            <span>{{ item.name }}</span>
-          </el-menu-item>
-        </template>
-      </el-menu>
-    </el-scrollbar>
+    <Menu :isCollapse="isCollapse" />
 
     <div class="aside-collapse-active" @click="isCollapse = !isCollapse">
       <span>{{ isCollapse ? '展开' : '收起' }}</span>
@@ -54,23 +18,13 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
-  import { getMenus } from '@/router/menu'
+  import Menu from './Menu.vue'
 
-  const menus = getMenus()
-
-  const show = ref(true)
   const isCollapse = ref(false)
 
   const asideWidth = computed(() => {
     return isCollapse.value ? '48px' : '200px'
   })
-
-  const handleOpen = (key: any, keyPath: string) => {
-    console.log(key, keyPath)
-  }
-  const handleClose = (key: any, keyPath: string) => {
-    console.log(key, keyPath)
-  }
 </script>
 
 <style lang="scss" scoped>

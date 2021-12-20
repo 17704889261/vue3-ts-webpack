@@ -14,14 +14,14 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import(/* webpackChunkName: "test" */ '@/views/home/index.vue')
       },
       {
-        path: 'about',
-        name: 'About',
-        component: () => import(/* webpackChunkName: "test" */ '@/views/about/index.vue')
+        path: 'axios',
+        name: 'Axios',
+        component: () => import(/* webpackChunkName: "test" */ '@/views/axios/index.vue')
       },
       {
-        path: 'layout',
-        name: 'LayoutTest',
-        component: () => import(/* webpackChunkName: "test" */ '@/views/layout/index.vue')
+        path: 'array-to-tree',
+        name: 'ArrayToTree',
+        component: () => import(/* webpackChunkName: "test" */ '@/views/array-to-tree/index.vue')
       }
     ]
   }
