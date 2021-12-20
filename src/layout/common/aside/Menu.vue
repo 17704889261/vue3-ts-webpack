@@ -87,45 +87,6 @@
 </script>
 
 <style lang="scss" scoped>
-  /* 菜单主体内容 */
-  .aside-container {
-    background-color: var(--aside-background-color);
-    height: 100%;
-    transition: width 0.5s;
-
-    /* 顶部logo */
-    .aside-logo {
-      height: 48px;
-      padding: 0 10px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      align-content: center;
-      flex-wrap: nowrap;
-
-      img {
-        width: 25px;
-        margin-right: 8px;
-      }
-
-      h1 {
-        margin: 0;
-        font-size: 12px;
-        color: #fff;
-      }
-    }
-
-    /* 底部菜单 */
-    .aside-collapse-active {
-      color: #fff;
-      height: 48px;
-      line-height: 48px;
-      font-size: 12px;
-      text-align: center;
-      cursor: pointer;
-    }
-  }
-
   /* menu区域 */
   .aside-container .aside-scrollbar {
     height: 100%;
@@ -144,7 +105,7 @@
   /* menu区域 */
   .aside-container .el-menu {
     border: none;
-    --el-menu-background-color: var(--aside-background-color);
+    --el-menu-background-color: var(--layout-base-color);
 
     .el-menu-item,
     .el-submenu__title {
@@ -161,12 +122,18 @@
       transition: width 10.5s;
     }
   }
-  /* 浮窗状态下的菜单 */
+  /* 在 body中插入 浮窗状态下的菜单 */
   .aside-menu-poper {
-    left: 48px !important;
+    left: var(--layout-base-height) !important;
   }
   .aside-menu-poper,
   .aside-menu-poper .el-menu {
-    background: var(--aside-background-color) !important;
+    background: var(--layout-base-color) !important;
+
+    img {
+      width: 16px;
+      margin-right: 8px;
+      transition: width 10.5s;
+    }
   }
 </style>

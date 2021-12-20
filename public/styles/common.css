@@ -5,23 +5,15 @@
   padding: 0;
 }
 
-  body {
-    --el-color-primary: #3e9dfc;
-    --el-color-primary-light-9: #3e9dfce6;
+/* 先做一套常规模式的主题 */
+body {
+  --el-color-primary: #3e9dfc;
+  --el-color-primary-light-9: #3e9dfce6;
 
-    --aside-background-color: #001529;
 
-    /* ========== .el-menu start ========== */
-    /* --el-menu-item-font-size: var(--el-font-size-base); */
-    /* --el-menu-item-font-color: var(--el-text-color-primary); */
-    /* --el-menu-item-hover-fill: var(--el-color-primary-light-9); */
-    --el-menu-background-color: var(--aside-background-color);
-    /* --el-menu-border-color: #e6e6e6; */
-    /* border-right: solid 1px var(--el-menu-border-color); */
-    /* list-style: none; */
-    /* position: relative; */
-    /* margin: 0; */
-    /* padding-left: 0; */
-    /* background-color: var(--el-menu-background-color); */
-    /* ========== .el-menu end ========== */
-  }
+  /* ===== 布局需要的内容 ===== */
+  --layout-base-height: 48px;
+  --layout-base-color: #001529;
+  --layout-base-backgroud-color: #f5f7fa;
+}
+
