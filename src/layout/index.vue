@@ -8,9 +8,11 @@
       <LayoutHeader />
       <!-- 核心内容区 -->
       <el-main>
-        <router-view v-slot="{ Component }">
+        <router-view v-slot="{ Component, route }">
           <transition :name="viewTransition" mode="out-in">
-            <component :is="Component" />
+            <div :key="route.name">
+              <component :is="Component"></component>
+            </div>
           </transition>
         </router-view>
       </el-main>

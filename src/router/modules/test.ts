@@ -9,6 +9,14 @@ const routes: Array<RouteRecordRaw> = [
     component: DefaultLayout,
     children: [
       {
+        path: 'dependencies',
+        name: 'Dependencies',
+        meta: {
+          title: 'Dependencies'
+        },
+        component: () => import(/* webpackChunkName: "test" */ '@/views/dependencies/index.vue')
+      },
+      {
         path: 'home',
         name: 'Home',
         component: () => import(/* webpackChunkName: "test" */ '@/views/home/index.vue')

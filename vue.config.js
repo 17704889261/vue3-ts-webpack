@@ -18,6 +18,11 @@ const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 // 开启gzip压缩， 按需引用
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const packages = require('./package.json')
+
+const APP_PKG = {
+  pkg: packages
+}
 
 const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i // 开启gzip压缩， 按需写入
 
@@ -50,6 +55,11 @@ module.exports = {
     config.plugin('html').tap(args => {
       // 修复 Lazy loading routes Error
       args[0].chunksSortMode = 'none'
+      return args
+    })
+    // 添加全局变量
+    config.plugin('define').tap(args => {
+      args[0].APP_PKG = JSON.stringify(APP_PKG)
       return args
     })
     // 添加别名
