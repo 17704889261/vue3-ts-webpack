@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import type { ActionContext } from 'vuex'
+import { setStorage, getStorage } from '@/utils/storage'
 
-export interface StateModule {
+export interface UserStateModule {
   // 定义该模块的state类型
   name: string
   token: string
 }
 
-export const state: StateModule = {
+export const state: UserStateModule = {
   name: '',
   token: ''
 }
@@ -22,9 +23,16 @@ export const mutations = {
 }
 
 export const actions = {
-  login({ commit }: ActionContext<StateModule, any>) {
-    // 目前没导出RootState,暂时先用any代替
+  login({ commit }: ActionContext<UserStateModule, any>, params: any) {
+    setStorage('form', JSON.stringify(params))
+    commit('setName', params.name)
     commit('setToken', 'token')
+  }
+}
+
+export const getters = {
+  getName(state: { name: string }) {
+    return state.name
   }
 }
 
@@ -32,5 +40,6 @@ export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
+  getters
 }

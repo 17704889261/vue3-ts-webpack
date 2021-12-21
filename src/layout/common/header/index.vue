@@ -8,16 +8,19 @@
     <!-- 头像区域 -->
     <div class="user-container">
       <img class="user-img" src="@/assets/logo.png" />
-      <div class="user-name">Hello {{ name }}</div>
+      <div class="user-name">Hello {{ userName }}</div>
     </div>
   </el-header>
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { useStore } from 'vuex'
+  import { useCollapse } from '../utils/useSetting'
 
-  const isCollapse = ref(false)
-  const name = ref('Sam')
+  const store = useStore()
+
+  const isCollapse = useCollapse()
+  const userName = store.getters['UserModel/getName']
 </script>
 
 <style lang="scss" scoped>

@@ -1,12 +1,12 @@
 <template>
   <!-- 左侧导航 -->
   <el-aside :width="asideWidth" class="aside-container">
-    <div class="aside-logo">
+    <router-link to="/" class="aside-logo">
       <img src="@/assets/logo.png" alt="" />
       <transition name="fade">
         <h1 v-show="!isCollapse">Vue3 TS Webpack</h1>
       </transition>
-    </div>
+    </router-link>
 
     <Menu :isCollapse="isCollapse" />
 
@@ -17,10 +17,11 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { computed } from 'vue'
+  import { useCollapse } from '../utils/useSetting'
   import Menu from './Menu.vue'
 
-  const isCollapse = ref(false)
+  const isCollapse = useCollapse()
 
   const asideWidth = computed(() => {
     return isCollapse.value ? '48px' : '200px'
@@ -32,17 +33,19 @@
   .aside-container {
     background-color: var(--layout-base-color);
     height: 100%;
-    transition: width 0.5s;
+    transition: width 0.3s;
 
     /* 顶部logo */
     .aside-logo {
       height: var(--layout-base-height);
       padding: 0 10px;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: flex-start;
       align-content: center;
       flex-wrap: nowrap;
+      text-decoration: none;
 
       img {
         width: 25px;

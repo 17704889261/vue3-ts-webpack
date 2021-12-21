@@ -2,15 +2,21 @@
   <div class="login-container">
     <el-card class="login-form">
       <h2 class="title">欢迎登录模版系统</h2>
-      <el-form class="container" ref="form" :model="form" label-position="left" label-width="60px">
+      <el-form
+        class="container"
+        ref="formContainer"
+        :model="form"
+        label-position="left"
+        label-width="60px"
+      >
         <el-form-item class="item" label="用户名">
-          <el-input v-model="form.user"></el-input>
+          <el-input v-model="form.user" type="text"></el-input>
         </el-form-item>
         <el-form-item class="item" label="密码">
-          <el-input v-model="form.password"></el-input>
+          <el-input v-model="form.password" type="password"></el-input>
         </el-form-item>
         <el-form-item class="item" label="验证码">
-          <el-input v-model="form.validateInfo"></el-input>
+          <el-input v-model="form.validateInfo" type="text"></el-input>
         </el-form-item>
         <div class="button-container">
           <el-button type="primary" @click="onSubmit">登录</el-button>
@@ -22,20 +28,24 @@
 <script setup lang="ts">
   import { reactive } from 'vue'
   import { useRouter } from 'vue-router'
+  import { useStore } from 'vuex'
 
   const router = useRouter()
+  const store = useStore()
+
   const form = reactive({
-    user: '',
+    user: 'test',
     password: '',
     validateInfo: ''
   })
 
-  function onSubmit() {
+  async function onSubmit() {
+    await store.dispatch('UserModel/login', form)
     router.push('/')
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .login-container {
     display: flex;
     height: 100%;
