@@ -24,7 +24,8 @@ module.exports = {
     defineProps: 'readonly',
     defineEmits: 'readonly',
     defineExpose: 'readonly',
-    withDefaults: 'readonly'
+    withDefaults: 'readonly',
+    APP_PKG: 'readonly'
   },
   plugins: ['vue', 'import'],
   rules: {

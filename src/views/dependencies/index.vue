@@ -12,12 +12,9 @@
 </template>
 
 <script setup lang="ts">
-  // eslint-disable-next-line no-undef
-  const packages = APP_PKG.pkg
+  import { useGetDependencies } from '@/components/common/useGetPkg'
 
-  console.log(' packages =======> ', packages)
-
-  const { dependencies, devDependencies } = packages
+  const { dependencies, devDependencies } = useGetDependencies()
 </script>
 
 <style lang="scss" scoped>
