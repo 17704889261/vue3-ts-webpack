@@ -48,7 +48,7 @@
     /* 声明文件目录，默认 node_modules/@types */
     "typeRoots": ["node_modules/@types/", "src/types"],
     /* 要导入的声明文件包，默认导入上面声明文件目录下的所有声明文件 */
-    "types": [],
+    "types": ["webpack-env", "jest", "node"],
 
     /* 将多个相互依赖的文件合并并且把编译后的内容输出到一个文件里
      * 可以用在产出 AMD 模块的场景中
