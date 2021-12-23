@@ -5,3 +5,11 @@ export const setStorage = (key: string, val: string) => {
 export const getStorage = (key: string) => {
   return window.localStorage.getItem(key)
 }
+
+export const removeStorage = (key: string) => {
+  window.localStorage.removeItem(key)
+}
+
+export const removeAllStorage = () => {
+  window.localStorage.clear()
+}

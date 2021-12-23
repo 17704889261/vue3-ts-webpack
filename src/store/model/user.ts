@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import type { ActionContext, Module } from 'vuex'
-import { setStorage } from '@/utils/storage'
+import type { Module } from 'vuex'
+import { setStorage, removeAllStorage } from '@/utils/storage'
 
 /* eslint-disable @typescript-eslint/no-shadow */
 
@@ -34,6 +34,11 @@ const SettingModel: Module<UserStateModule, any> = {
       setStorage('form', JSON.stringify(params))
       commit('setName', params.name)
       commit('setToken', 'token')
+    },
+    logout({ commit }): void {
+      removeAllStorage()
+      commit('setName', '')
+      commit('setToken', '')
     }
   }
 }

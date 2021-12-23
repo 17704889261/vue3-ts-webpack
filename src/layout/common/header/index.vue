@@ -6,21 +6,46 @@
       <span>{{ isCollapse ? '展开' : '收起' }}</span>
     </div>
     <!-- 头像区域 -->
-    <div class="user-container">
-      <img class="user-img" src="@/assets/logo.png" />
-      <div class="user-name">Hello {{ userName }}</div>
-    </div>
+    <el-dropdown @command="handleCommand">
+      <div class="user-container">
+        <img class="user-img" src="@/assets/logo.png" />
+        <div class="user-name">Hello {{ userName }}</div>
+      </div>
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item command="setting">系统设置</el-dropdown-item>
+          <el-dropdown-item command="logout">退出登录</el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
   </el-header>
 </template>
 
 <script setup lang="ts">
+  import { useRouter } from 'vue-router'
   import { useStore } from 'vuex'
   import { useCollapse } from '../utils/useSetting'
 
+  const router = useRouter()
   const store = useStore()
 
   const isCollapse = useCollapse()
   const userName = store.getters['UserModel/getName']
+
+  async function handleCommand(params: any) {
+    switch (params) {
+      case 'setting':
+        console.log(' 弹出系统设置弹窗/抽屉， 进行设置')
+        break
+      case 'logout':
+        console.log(' 清空缓存，退出登录 ')
+        await store.dispatch('UserModel/logout')
+        router.push('/login')
+        break
+      default:
+        break
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
