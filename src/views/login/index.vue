@@ -10,13 +10,13 @@
         label-width="60px"
       >
         <el-form-item class="item" label="用户名">
-          <el-input v-model="form.user" type="text"></el-input>
+          <el-input v-model="form.user" type="text" @keyup.enter="onSubmit"></el-input>
         </el-form-item>
         <el-form-item class="item" label="密码">
-          <el-input v-model="form.password" type="password"></el-input>
+          <el-input v-model="form.password" type="password" @keyup.enter="onSubmit"></el-input>
         </el-form-item>
         <el-form-item class="item" label="验证码">
-          <el-input v-model="form.validateInfo" type="text"></el-input>
+          <el-input v-model="form.validateInfo" type="text" @keyup.enter="onSubmit"></el-input>
         </el-form-item>
         <div class="button-container">
           <el-button type="primary" @click="onSubmit">登录</el-button>
