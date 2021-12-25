@@ -6,16 +6,38 @@
       <el-button :loading="loading" @click="getClickFunc2">request接口2</el-button>
     </h1>
     <Nprogress :type="type"></Nprogress>
-    <ul class="list" v-loading="loading">
-      <li v-for="(item, index) of list" :key="item.id">
-        <span style="margin-right: 16px">{{ index }}</span>
-        <span style="margin-right: 16px">{{ item.id }}</span>
-        <span style="margin-right: 16px">{{ item.name }}</span>
-        <span style="margin-right: 16px">{{ item.age }}</span>
-        <span style="margin-right: 16px">{{ item.sex }}</span>
-        <span style="margin-right: 16px">{{ item.sex1 }} - test </span>
-      </li>
-    </ul>
+    <el-table
+      ref="multipleTable"
+      stripe
+      :max-height="600"
+      :data="list"
+      v-loading="loading"
+      @selection-change="handleSelectionChange"
+    >
+      <el-table-column
+        type="selection"
+        fixed="left"
+        width="55"
+        header-align="center"
+        align="center"
+      />
+      <el-table-column type="index" width="50" header-align="center" align="center" />
+
+      <el-table-column label="ID" property="id" width="240" header-align="center" align="center" />
+      <el-table-column label="姓名" header-align="center" align="center" show-overflow-tooltip>
+        <template #default="scope">{{ scope.row.name }}</template>
+      </el-table-column>
+      <el-table-column label="年龄" property="age" header-align="center" align="center" />
+      <el-table-column label="性别" header-align="center" align="center">
+        <template #default="scope">
+          <span v-if="scope.row.sex">男</span>
+          <span v-else>女</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="性别1-拓展" header-align="center" align="center">
+        <template #default="scope"> {{ scope.row.sex1 }}-test </template>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -36,6 +58,11 @@
   const list = ref<Test1Res[]>([])
   const loading = ref(false)
   const type = ref('success')
+
+  // 点击每一列选择框触发的方法
+  const handleSelectionChange = (ele: any) => {
+    console.log(' 当前选中的元素内容是： ele =====> ', ele)
+  }
 
   // 点击按钮触发的方法-loading / 防抖
   const getClickFunc = () => {

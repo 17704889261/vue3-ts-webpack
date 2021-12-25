@@ -12,12 +12,12 @@ const routes: Array<RouteRecordRaw> = [
       title: 'Index'
     }
   },
+  ...testModule,
   {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/login/index.vue')
   },
-  ...testModule,
   {
     path: '/:pathMatch(.*)*',
     name: '404',
