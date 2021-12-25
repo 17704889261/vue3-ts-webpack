@@ -1,3 +1,12 @@
+## [1.0.2](https://github.com/17704889261/vue3-ts-webpack/compare/v1.0.1...v1.0.2) (2021-12-25)
+
+
+### Features
+
+* **all:** 完成了基本的框架搭建，可以作为简单框架使用了 ([5010105](https://github.com/17704889261/vue3-ts-webpack/commit/50101051d2e0087e732f6add8d0c60538ec78bd1))
+
+
+
 ## [1.0.1](https://github.com/17704889261/vue3-ts-webpack/compare/v0.2.0...v1.0.1) (2021-12-25)
 
 
