@@ -5,6 +5,11 @@ import testModule from './modules/test'
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login/index.vue')
+  },
+  {
     path: '/',
     name: 'Index',
     redirect: '/test',
@@ -13,11 +18,6 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   ...testModule,
-  {
-    path: '/login',
-    name: 'Login',
-    component: () => import('@/views/login/index.vue')
-  },
   {
     path: '/:pathMatch(.*)*',
     name: '404',

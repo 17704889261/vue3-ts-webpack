@@ -1,0 +1,80 @@
+{
+  // ------------------------------------------- 一些基本配置 ------------------------------------------------
+  // 包管理工具
+  "npm.packageManager": "yarn",
+  // 控制是否在搜索中跟踪符号链接。关闭rg.exe进程, 减少vscode对cpu的高占用
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  // ------------------------------------------- editor 配置项 ------------------------------------------------
+  // 制表符符号eslint
+  "editor.tabSize": 2,
+  "editor.detectIndentation": true,
+  // 编辑器在键入一行后自动格式化
+  "editor.formatOnPaste": true,
+  // 编辑器在粘贴内容后自动格式化
+  "editor.formatOnType": true,
+  // 代码格式化
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  // ------------------------------------------- 针对某种语言，配置替代编辑器设置 ------------------------------------------------
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[sass]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.tabWidth": 2,
+  // ------------------------------------------- files 配置项 ------------------------------------------------
+  // 文件自动保存
+  "files.autoSave": "onWindowChange",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  // ------------------------------------------- stylelint 配置项 ------------------------------------------------
+  // 防止编辑器内置的 [css] [less] [scss] 校验和此扩展 [stylelint] 报告相同的错误
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  // 默认会对很多文件进行检测，这是不必要的，我们只让他检测样式
+  "stylelint.validate": [
+    "css",
+    "html",
+    "less",
+    "postcss",
+    "sass",
+    "scss",
+    "source.css.styled",
+    "styled-css"
+  ],
+  "path-intellisense.extensionOnImport": true,
+  "editor.renderWhitespace": "none",
+  "breadcrumbs.enabled": false,
+  "extensions.ignoreRecommendations": false,
+  // ------------------------------------------- volar 配置项 ------------------------------------------------
+}
