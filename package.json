@@ -1,6 +1,6 @@
 {
   "name": "vue3-ts-webpack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "repository": "https://github.com/17704889261/vue3-ts-webpack.git",
   "scripts": {
