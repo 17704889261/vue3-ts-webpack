@@ -11,7 +11,9 @@ import {
   ElMenu,
   ElMenuItem,
   ElMenuItemGroup,
-  ElSubmenu
+  ElSubmenu,
+  ElDrawer,
+  ElDivider
 } from 'element-plus'
 import lang from 'element-plus/lib/locale/lang/zh-cn'
 import 'element-plus/lib/theme-chalk/index.css'
@@ -28,7 +30,9 @@ const components = [
   ElMenu,
   ElMenuItem,
   ElMenuItemGroup,
-  ElSubmenu
+  ElSubmenu,
+  ElDrawer,
+  ElDivider
 ]
 
 export default (app: any) => {

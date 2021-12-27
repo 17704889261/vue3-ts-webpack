@@ -18,12 +18,15 @@
         </el-dropdown-menu>
       </template>
     </el-dropdown>
+    <Settings v-if="settingActive" :drawer="settingActive" @changeStatus="changeSettings" />
   </el-header>
 </template>
 
 <script setup lang="ts">
+  import { ref } from 'vue'
   import { useRouter } from 'vue-router'
   import { useStore } from 'vuex'
+  import Settings from '@/layout/settings/index.vue'
   import { useCollapse } from '../utils/useSetting'
 
   const router = useRouter()
@@ -32,10 +35,13 @@
   const isCollapse = useCollapse()
   const userName = store.getters['UserModel/getName']
 
+  const settingActive = ref(false)
+
   async function handleCommand(params: any) {
     switch (params) {
       case 'setting':
         console.log(' 弹出系统设置弹窗/抽屉， 进行设置')
+        changeSettings(true)
         break
       case 'logout':
         console.log(' 清空缓存，退出登录 ')
@@ -45,6 +51,10 @@
       default:
         break
     }
+  }
+
+  function changeSettings(val: boolean) {
+    settingActive.value = val
   }
 </script>
 

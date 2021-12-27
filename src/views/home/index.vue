@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import ChangeThemes from './components/change-themes/index.vue'
+  import ChangeThemes from '@/components/ChangeThemes/index.vue'
 
   const msg = ref('【 vue3.0 】这是一个测试信息')
 </script>
