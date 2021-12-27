@@ -1,3 +1,12 @@
+# [2.0.0](https://github.com/17704889261/vue3-ts-webpack/compare/v1.0.2...v2.0.0) (2021-12-27)
+
+
+### Features
+
+* **layout:** 新增全局setting设置内容，需要后续补充优化 ([dfa869f](https://github.com/17704889261/vue3-ts-webpack/commit/dfa869f1f155b5aaf3f11729dff370c17bbedf39))
+
+
+
 ## [1.0.2](https://github.com/17704889261/vue3-ts-webpack/compare/v1.0.1...v1.0.2) (2021-12-25)
 
 
@@ -11,7 +20,7 @@
 
 
 
-## [0.2.0](https://github.com/17704889261/vue3-ts-webpack/compare/v0.1.0...v0.2.0) (2021-12-25)
+# [0.2.0](https://github.com/17704889261/vue3-ts-webpack/compare/v0.1.0...v0.2.0) (2021-12-25)
 
 
 ### Features
